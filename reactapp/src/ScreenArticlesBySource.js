@@ -74,6 +74,7 @@ function ScreenArticlesBySource(props) {
                   actions={[
                       <Icon type="read" key="ellipsis2" onClick={() => showModal(article.title,article.content)} />,
                       <Icon type="like" key="ellipsis" onClick={()=> {props.addToWishList(article)}} />
+                      // <Icon type="like" key="ellipsis" onClick={()=> {props.addToWishList(article)}} />
                   ]}
                   >
 
@@ -108,17 +109,17 @@ function ScreenArticlesBySource(props) {
   );
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    addToWishList: function(article){
-      dispatch({type: 'addArticle',
-        articleLiked: article
-      })
-    }
-  }
-}
+// function mapDispatchToProps(dispatch){
+//   return {
+//     addToWishList: function(article){
+//       dispatch({type: 'addArticle',
+//         articleLiked: article
+//       })
+//     }
+//   }
+// }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(ScreenArticlesBySource)
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(ScreenArticlesBySource)
