@@ -5,7 +5,7 @@ var uid2 = require('uid2')
 var bcrypt = require('bcrypt');
 
 var userModel = require('../models/users')
-
+var articleModel = require('../models/articles')
 
 router.post('/sign-up', async function(req,res,next){
 
@@ -38,6 +38,8 @@ router.post('/sign-up', async function(req,res,next){
       email: req.body.emailFromFront,
       password: hash,
       token: uid2(32),
+      wishList:[]
+      languagePref: 'fr';
     })
   
     saveUser = await newUser.save()
@@ -91,5 +93,20 @@ router.post('/sign-in', async function(req,res,next){
 
 
 })
+
+router.post('/addToWishList', async function(req,res,next){
+  //save article to bdd au clic sur like
+  await UserModel.updateOne(
+    { token: req.body.token},
+    { wishList: "john@doe.fr" }
+   );
+
+res.json({result, user, error, token})
+
+
+router.post('/deleteFromWishList', async function(req,res,next){
+  //save article to bdd
+res.json({result, user, error, token})
+
 
 module.exports = router;
